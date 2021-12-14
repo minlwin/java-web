@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="https://jakarta.ee/xml/ns/jakartaee" 
+xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="5.0">
+  <display-name>jdbc-datasource</display-name>
+  
+  <welcome-file-list>
+  	<welcome-file>/home</welcome-file>
+  </welcome-file-list>
+  
+  <security-role>
+  	<role-name>Member</role-name>
+  </security-role>
+  
+  <security-role>
+  	<role-name>Admin</role-name>
+  </security-role>
+  
+  <login-config>
+  	<auth-method>FORM</auth-method>
+  	<form-login-config>
+  		<form-login-page>/login.jsp</form-login-page>
+  		<form-error-page>/login.jsp?m=error</form-error-page>
+  	</form-login-config>
+  </login-config>
+   
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>Member Resources</web-resource-name>
+  		<url-pattern>/message/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>Admin</role-name>
+  		<role-name>Member</role-name>
+  	</auth-constraint>
+  </security-constraint>
+
+  <resource-ref>
+  	<res-ref-name>jdbc/MessageDB</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  </resource-ref>
+</web-app>
