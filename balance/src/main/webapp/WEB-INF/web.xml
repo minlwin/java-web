@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+	version="5.0">
+	<display-name>Balance</display-name>
+	<welcome-file-list>
+		<welcome-file>login</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
+	
+	
+	<filter-mapping>
+		<filter-name>authFilter</filter-name>
+		<url-pattern>/employee/*</url-pattern>
+		<url-pattern>/manager/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>employeeFilter</filter-name>
+		<url-pattern>/employee/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>managerFilter</filter-name>
+		<url-pattern>/manager/*</url-pattern>
+	</filter-mapping>
+	
+</web-app>
